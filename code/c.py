@@ -55,7 +55,7 @@ def digital_to_chinese(digital):
     return last_str
 
 try:
-    logging.info("epd2in9 Demo")
+    logging.info("epd2in9 Clock")
     
     epd = epd2in9.EPD()
     logging.info("init and Clear")
@@ -67,7 +67,6 @@ try:
     font100 = ImageFont.truetype(os.path.join(picdir, 'Font.ttc'), 100)
    
     # partial update
-    logging.info("5.show time")
     epd.init(epd.lut_partial_update)    
     epd.Clear(0xFF)
     time_image = Image.new('1', (epd.height, epd.width), 255)
@@ -75,13 +74,8 @@ try:
     num = 0
     while (True):
         time_draw.rectangle((10, 10, 290, 120), fill = 255)
-        time_draw.text((40, 5), time.strftime('%Y-%m-%d')+u'   星期'+digital_to_chinese(time.strftime('%w')), font = font24, fill = 0)
+        time_draw.text((10, 5), time.strftime('%m-%d')+u' 周'+digital_to_chinese(time.strftime('%w'))+u' 17~33°C 晴', font = font24, fill = 0)
         time_draw.text((25, 20), time.strftime('%H:%M'), font = font100, fill = 0)
-        # time_draw.text((30, 30), time.strftime('%A'), font = font24, fill = 0)
-        # time_draw.text((60, 60), time.strftime('%Y-%m-%d-%A'), font = font24, fill = 0)
-        # time_draw.text((5, 70), u'一二三四五六日星期年月日时分秒', font = font18, fill = 0)
-        
-       # time_draw.text((30, 30), u'12:12', font = font46, fill = 0)
         newimage = time_image.crop([10, 10, 120, 150])
         time_image.paste(newimage, (10,10))  
         epd.display(epd.getbuffer(time_image))
