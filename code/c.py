@@ -17,7 +17,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 def digital_to_chinese(digital):
     str_digital = str(digital)
-    chinese = {'1': '一', '2': '二', '3': '三', '4': '四', '5': '五', '6': '六', '7': '日', '8': '八', '9': '九', '0': '零'}
+    chinese = {'1': '一', '2': '二', '3': '三', '4': '四', '5': '五', '6': '六', '7': '日', '8': '八', '9': '九', '0': '日'}
     chinese2 = ['拾', '佰', '仟', '万', '厘', '分', '角']
     jiao = ''
     bs = str_digital.split('.')
