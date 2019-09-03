@@ -105,7 +105,7 @@ try:
         num = num + 1
         if(num == 1800):
              temperature,weather = getWeather()
-             reportTime,tomorrowWeather,tomorrowNightTemp,tomorrowDayTemp,acquiredWeather,acquiredNightTemp,acquiredDayTemp = getWeatherMore()
+             reportTime,tomorrowWeather,tomorrowNightTemp,tomorrowDayTemp = getWeatherMore()
              time_draw.text((10,110),u'今:'+temperature+u'°C '+weather+u' 明:'+tomorrowNightTemp+u'~'+tomorrowDayTemp+u'°C '+tomorrowWeather+u' 更:'+reportTime,font = font18,fill = 0)
              num = 0
         time_draw.rectangle((10, 10, 290, 110), fill = 255)
