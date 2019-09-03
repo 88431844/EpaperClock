@@ -1,0 +1,6 @@
+2019-09-03 11:37:46,309 - c.py[line:81] - INFO: epd2in9 Clock
+2019-09-03 11:37:46,311 - c.py[line:84] - INFO: init and Clear
+2019-09-03 11:37:51,537 - /usr/lib/python3/dist-packages/urllib3/connectionpool.py[line:205] - DEBUG: Starting new HTTP connection (1): restapi.amap.com:80
+2019-09-03 11:37:51,662 - /usr/lib/python3/dist-packages/urllib3/connectionpool.py[line:393] - DEBUG: http://restapi.amap.com:80 "GET /v3/weather/weatherInfo?city=110105&key=446bdde0691cffb14c1aff83a8912467 HTTP/1.1" 200 256
+2019-09-03 11:37:51,698 - /usr/lib/python3/dist-packages/urllib3/connectionpool.py[line:205] - DEBUG: Starting new HTTP connection (1): restapi.amap.com:80
+2019-09-03 11:37:51,875 - /usr/lib/python3/dist-packages/urllib3/connectionpool.py[line:393] - DEBUG: http://restapi.amap.com:80 "GET /v3/weather/weatherInfo?extensions=all&city=110108&key=446bdde0691cffb14c1aff83a8912467 HTTP/1.1" 200 None
