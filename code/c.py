@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding:utf-8 -*-
-import sys,requests,json
+import sys,requests,json,datetime
 import os
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
@@ -21,6 +21,29 @@ logging.basicConfig(level=logging.DEBUG,#控制台打印的日志级别
                     '%(asctime)s - %(pathname)s[line:%(lineno)d] - %(levelname)s: %(message)s'
                     #日志格式
                     )
+def getMoneyDay():
+    time_1 = datetime.date.today()
+    year_1 = time_1.year
+    month_1 = time_1.month
+    day_1 = time_1.day
+
+    year_2 = year_1
+    if day_1 > 10:
+        month_2 = int(month_1) + 1
+    else:
+        month_2 = month_1
+
+    day_2 = 10
+
+    d1 = datetime.datetime(int(year_1),int(month_1),int(day_1))
+    d2 = datetime.datetime(int(year_2),int(month_2),int(day_2))
+
+    day = (d2 - d1).days
+
+    if day < 10:
+        day = "0"+str(day)
+
+    return day
 def getWeather():
     r = requests.get('http://restapi.amap.com/v3/weather/weatherInfo?city=110105&key=446bdde0691cffb14c1aff83a8912467')
     r.encoding = 'utf-8'
@@ -99,18 +122,17 @@ try:
     num = 0
     temperature,weather = getWeather()
     reportTime,tomorrowWeather,tomorrowNightTemp,tomorrowDayTemp = getWeatherMore()
-    time_draw.text((10,110),u'今:'+temperature+u'°C '+weather+u' 明:'+tomorrowNightTemp+u'~'+tomorrowDayTemp+u'°C '+tomorrowWeather+u' 更:'+reportTime,font = font18,fill = 0)
     while (True):
 #每隔半小时更新天气
         num = num + 1
-        if(num == 1800):
+        if(num == 300):
              temperature,weather = getWeather()
              reportTime,tomorrowWeather,tomorrowNightTemp,tomorrowDayTemp = getWeatherMore()
-             time_draw.text((10,110),u'今:'+temperature+u'°C '+weather+u' 明:'+tomorrowNightTemp+u'~'+tomorrowDayTemp+u'°C '+tomorrowWeather+u' 更:'+reportTime,font = font18,fill = 0)
              num = 0
-        time_draw.rectangle((10, 10, 290, 110), fill = 255)
-        time_draw.text((10, 5), u' '+time.strftime('%m-%d')+u' 周'+digital_to_chinese(time.strftime('%w'))+u' | 距开资:07天', font = font24, fill = 0)
+        time_draw.rectangle((10, 10, 290, 128), fill = 255)
+        time_draw.text((10, 5), u' '+time.strftime('%m-%d')+u' 周'+digital_to_chinese(time.strftime('%w'))+u' | 距开资:'+getMoneyDay()+u'天', font = font24, fill = 0)
         time_draw.text((10, 25), time.strftime('%H:%M'), font = font, fill = 0)
+        time_draw.text((10,110),u'今:'+temperature+u'°C '+weather+u' 明:'+tomorrowNightTemp+u'~'+tomorrowDayTemp+u'°C '+tomorrowWeather+u' 更:'+reportTime,font = font18,fill = 0)
         newimage = time_image.crop([10, 10, 120, 150])
         time_image.paste(newimage, (10,10))  
         epd.display(epd.getbuffer(time_image))
