@@ -53,15 +53,21 @@ def getWeather():
     weather = str(w['weather'].encode('utf-8'),'utf-8')
     return temperature,weather
 def getWeatherMore():
-    r = requests.get('http://restapi.amap.com/v3/weather/weatherInfo?extensions=all&city=110108&key=446bdde0691cffb14c1aff83a8912467')
-    r.encoding = 'utf-8'
-    weatherData = json.loads(r.text.encode('utf-8'))
-    forecasts = weatherData['forecasts'][0]
-    reportTime = str(forecasts['reporttime'].encode('utf-8'),'utf-8')[10:16]
-    casts = forecasts['casts']
-    tomorrowWeather = casts[1]['dayweather']
-    tomorrowNightTemp = casts[1]['nighttemp']
-    tomorrowDayTemp = casts[1]['daytemp']
+    try:
+        r = requests.get('http://restapi.amap.com/v3/weather/weatherInfo?extensions=all&city=110108&key=446bdde0691cffb14c1aff83a8912467')
+        r.encoding = 'utf-8'
+        weatherData = json.loads(r.text.encode('utf-8'))
+        forecasts = weatherData['forecasts'][0]
+        reportTime = str(forecasts['reporttime'].encode('utf-8'),'utf-8')[10:16]
+        casts = forecasts['casts']
+        tomorrowWeather = casts[1]['dayweather']
+        tomorrowNightTemp = casts[1]['nighttemp']
+        tomorrowDayTemp = casts[1]['daytemp']
+    except:
+        reportTime = "00:00"
+        tomorrowWeather = "00"
+        tomorrowNightTemp = "00"
+        tomorrowDayTemp = "00"
     return reportTime,tomorrowWeather,tomorrowNightTemp,tomorrowDayTemp
 	
 def digital_to_chinese(digital):
