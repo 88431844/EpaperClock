@@ -1,3 +1,3 @@
 # epaperClock
 a epaper project,driver by raspberry zero w,show on epaper.
-![avatar](https://github.com/88431844/epaperClock/blob/master/IMG_4922.JPG)
+![avatar](https://github.com/88431844/ePaperThing/blob/master/IMG_4380.HEIC)
