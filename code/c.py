@@ -35,6 +35,10 @@ def getMoneyDay():
         month_2 = int(month_1) + 1
     else:
         month_2 = month_1
+        
+    if month_2 > 12:
+        month_2 = month_2 - 12
+        year_2 = year_1 + 1
 
     day_2 = 10
 
