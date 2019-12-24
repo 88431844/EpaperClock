@@ -1,5 +1,14 @@
 # epaperClock
 a epaper project,driver by raspberry zero w,show on epaper.
+
+
+## 安装库
+
+    sudo apt-get update
+    sudo apt-get install python-pip
+    sudo apt-get install python-pil
+    sudo apt-get install python-numpy
+    sudo pip install RPi.GPIO
 ##
 supervisor配置中增加：
 ```
