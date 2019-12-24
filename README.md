@@ -1,5 +1,15 @@
 # epaperClock
-a epaper project,driver by raspberry zero w,show on epaper.
+基于微雪2.9寸墨水屏和树莓派zero w，制作的墨水屏时钟。其中天气基于高德天气API：https://lbs.amap.com/
+
+## 目前功能
+- 日期
+- 星期
+- 距离开资日期（默认为每月十日，目前不太智能，后续会修改，如果有后续）
+- 今日温度
+- 今日天气
+- 明日气温（低温/高温）
+- 明日天气
+- 明日天气更新时间
 
 
 ## 安装库
