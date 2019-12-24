@@ -36,7 +36,7 @@ supervisor配置中增加：
 command=python3 /root/epaperclock/code/c.py
 autorestart=true ;程序退出自动重启
 ```
-##显示效果
+## 显示效果
 
 
 ![avatar](https://github.com/88431844/epaperClock/blob/master/img/clockImg.JPG)
