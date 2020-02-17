@@ -141,14 +141,14 @@ try:
     time_image = Image.new('1', (epd.height, epd.width), 255)
     time_draw = ImageDraw.Draw(time_image)
     num = 0
-    temperature, weather = getWeather()
-    reportTime, tomorrowWeather, tomorrowNightTemp, tomorrowDayTemp = getWeatherMore()
+    # temperature, weather = getWeather()
+    # reportTime, tomorrowWeather, tomorrowNightTemp, tomorrowDayTemp = getWeatherMore()
     while (True):
         # 每隔半小时更新天气
         num = num + 1
         if (num == 300):
-            temperature, weather = getWeather()
-            reportTime, tomorrowWeather, tomorrowNightTemp, tomorrowDayTemp = getWeatherMore()
+            # temperature, weather = getWeather()
+            # reportTime, tomorrowWeather, tomorrowNightTemp, tomorrowDayTemp = getWeatherMore()
             num = 0
         time_draw.rectangle((10, 10, 290, 128), fill=255)
         moneyDay = getMoneyDay()
@@ -156,12 +156,11 @@ try:
             time_draw.text((10, 5), u' ' + time.strftime('%m-%d') + u' 周' + digital_to_chinese(
                 time.strftime('%w')) + u'|今天要开资了!', font=font24, fill=0)
         else:
-            time_draw.text((10, 5), u' ' + time.strftime('%m-%d') + u' 周' + digital_to_chinese(
+            time_draw.text((10, 10), u' ' + time.strftime('%m-%d') + u' 周' + digital_to_chinese(
                 time.strftime('%w')) + u' | 距开资:' + str(moneyDay) + u'天', font=font24, fill=0)
-        time_draw.text((10, 25), time.strftime('%H:%M'), font=font, fill=0)
-        time_draw.text((10, 110),
-                       u'今:' + temperature + u'°C ' + weather + u' 明:' + tomorrowNightTemp + u'~' + tomorrowDayTemp + u'°C ' + tomorrowWeather + u' 更:' + reportTime,
-                       font=font18, fill=0)
+            time_draw.text((10, 35), time.strftime('%H:%M'), font=font, fill=0)
+        # time_draw.text((10, 25), time.strftime('%H:%M'), font=font, fill=0)
+        # time_draw.text((10, 110), u'今:' + temperature + u'°C ' + weather + u' 明:' + tomorrowNightTemp + u'~' + tomorrowDayTemp + u'°C ' + tomorrowWeather + u' 更:' + reportTime, font=font18, fill=0)
         newimage = time_image.crop([10, 10, 120, 150])
         time_image.paste(newimage, (10, 10))
         epd.display(epd.getbuffer(time_image))
@@ -179,3 +178,4 @@ except KeyboardInterrupt:
     logging.info("ctrl + c:")
     epd2in9.epdconfig.module_exit()
     exit()
+
