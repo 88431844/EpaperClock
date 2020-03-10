@@ -158,7 +158,7 @@ try:
         else:
             time_draw.text((10, 10), u' ' + time.strftime('%m-%d') + u' 周' + digital_to_chinese(
                 time.strftime('%w')) + u' | 距开资:' + str(moneyDay) + u'天', font=font24, fill=0)
-            time_draw.text((10, 35), time.strftime('%H:%M'), font=font, fill=0)
+        time_draw.text((10, 35), time.strftime('%H:%M'), font=font, fill=0)
         # time_draw.text((10, 25), time.strftime('%H:%M'), font=font, fill=0)
         # time_draw.text((10, 110), u'今:' + temperature + u'°C ' + weather + u' 明:' + tomorrowNightTemp + u'~' + tomorrowDayTemp + u'°C ' + tomorrowWeather + u' 更:' + reportTime, font=font18, fill=0)
         newimage = time_image.crop([10, 10, 120, 150])
