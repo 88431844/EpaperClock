@@ -9,7 +9,7 @@ if os.path.exists(libdir):
     sys.path.append(libdir)
 
 import logging
-from waveshare_epd import epd4in2bc
+from waveshare_epd import epd2in9
 import time
 from PIL import Image, ImageDraw, ImageFont
 import traceback
@@ -35,7 +35,7 @@ def getMoneyDay():
         month_2 = int(month_1) + 1
     else:
         month_2 = month_1
-        
+
     if month_2 > 12:
         month_2 = month_2 - 12
         year_2 = year_1 + 1
@@ -122,12 +122,12 @@ def digital_to_chinese(digital):
 
 
 try:
-    logging.info("epd4in2bc Clock")
+    logging.info("epd2in9 Clock")
 
-    epd = epd4in2bc.EPD()
+    epd = epd2in9.EPD()
     logging.info("init and Clear")
     epd.init(epd.lut_full_update)
-    epd.Clear()
+    epd.Clear(0xFF)
 
     # font24 = ImageFont.truetype(os.path.join(picdir, 'font-f930.ttc'), 18)
     font24 = ImageFont.truetype(os.path.join(picdir, 'font-old.ttc'), 24)
@@ -137,7 +137,7 @@ try:
 
     # partial update
     epd.init(epd.lut_partial_update)
-    epd.Clear()
+    epd.Clear(0xFF)
     time_image = Image.new('1', (epd.height, epd.width), 255)
     time_draw = ImageDraw.Draw(time_image)
     num = 0
