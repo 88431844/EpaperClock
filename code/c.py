@@ -165,11 +165,7 @@ try:
         newimage = time_image.crop([10, 10, 120, 150])
         time_image.paste(newimage, (10, 10))
         epd.display(epd.getbuffer(time_image))
-    logging.info("Clear...")
-    epd.init(epd.lut_full_update)
-    epd.Clear(0xFF)
 
-    logging.info("Goto Sleep...")
     epd.sleep()
 
 except IOError as e:
