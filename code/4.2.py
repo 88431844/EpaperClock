@@ -9,7 +9,7 @@ if os.path.exists(libdir):
     sys.path.append(libdir)
 
 import logging
-from waveshare_epd import epd2in9
+from waveshare_epd import epd4in2bc
 import time
 from PIL import Image, ImageDraw, ImageFont
 import traceback
@@ -122,12 +122,12 @@ def digital_to_chinese(digital):
 
 
 try:
-    logging.info("epd2in9 Clock")
+    logging.info("epd4in2bc Clock")
 
-    epd = epd2in9.EPD()
+    epd = epd4in2bc.EPD()
     logging.info("init and Clear")
-    epd.init(epd.lut_full_update)
-    epd.Clear(0xFF)
+    epd.init()
+    epd.Clear()
 
     # font24 = ImageFont.truetype(os.path.join(picdir, 'font-f930.ttc'), 18)
     font24 = ImageFont.truetype(os.path.join(picdir, 'font-old.ttc'), 24)
@@ -136,8 +136,8 @@ try:
     font = ImageFont.truetype(os.path.join(picdir, 'font-f930.ttc'), 87)
 
     # partial update
-    epd.init(epd.lut_partial_update)
-    epd.Clear(0xFF)
+    epd.init()
+    epd.Clear()
     time_image = Image.new('1', (epd.height, epd.width), 255)
     time_draw = ImageDraw.Draw(time_image)
     num = 0
