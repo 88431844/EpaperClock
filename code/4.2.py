@@ -167,8 +167,8 @@ try:
         #                font=font18, fill=0)
         newimage = time_image.crop([10, 10, 120, 150])
         time_image.paste(newimage, (10, 10))
-        epd.displayBlack(epd.getbuffer(cv2.flip(cv2.cvtColor(np.array(time_image), cv2.COLOR_RGB2BGR), 1)))
-
+        # epd.displayBlack(epd.getbuffer(cv2.flip(cv2.cvtColor(np.array(time_image), cv2.COLOR_RGB2BGR), 1)))
+        epd.displayBlack(epd.getbuffer(time_image.transpose(Image.FLIP_LEFT_RIGHT)))
 
     epd.sleep()
 
