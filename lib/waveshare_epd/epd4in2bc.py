@@ -231,7 +231,8 @@ class EPD:
         #clear red
         self.send_command(0x26)
         for i in range(0, int(self.width * self.height / 8)):
-            self.send_data(0xFF)
+            # self.send_data(0xFF)
+            self.send_data(0x00)
 
         self.UpdateDisplay()
 
