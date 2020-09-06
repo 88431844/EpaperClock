@@ -153,7 +153,7 @@ try:
             # temperature, weather = getWeather()
             # reportTime, tomorrowWeather, tomorrowNightTemp, tomorrowDayTemp = getWeatherMore()
             num = 0
-        time_draw.rectangle((10, 10, 300, 400), fill=255)
+        time_draw.rectangle((10, 10, 400, 300), fill=255)
         moneyDay = getMoneyDay()
         if ('00' == moneyDay):
             time_draw.text((10, 5), u' ' + time.strftime('%m-%d') + u' 周' + digital_to_chinese(
