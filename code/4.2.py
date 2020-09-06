@@ -3,8 +3,8 @@
 import sys, requests, json, datetime
 import os
 import cv2
-reload(sys)
-sys.setdefaultencoding('utf8')
+# reload(sys)
+# sys.setdefaultencoding('utf8')
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
 libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'lib')
 if os.path.exists(libdir):
