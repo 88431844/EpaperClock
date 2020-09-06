@@ -3,6 +3,7 @@
 import sys, requests, json, datetime
 import os
 import cv2
+import numpy as np
 # reload(sys)
 # sys.setdefaultencoding('utf8')
 picdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), 'font')
@@ -166,7 +167,8 @@ try:
         #                font=font18, fill=0)
         newimage = time_image.crop([10, 10, 120, 150])
         time_image.paste(newimage, (10, 10))
-        epd.displayBlack(epd.getbuffer(cv2.flip(time_image, 1)))
+        epd.displayBlack(epd.getbuffer(cv2.flip(cv2.cvtColor(np.array(time_image), cv2.COLOR_RGB2BGR), 1)))
+
 
     epd.sleep()
 
