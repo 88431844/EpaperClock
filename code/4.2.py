@@ -152,7 +152,7 @@ try:
             # temperature, weather = getWeather()
             # reportTime, tomorrowWeather, tomorrowNightTemp, tomorrowDayTemp = getWeatherMore()
             num = 0
-        time_draw.rectangle((0, 0, 300, 300), fill=255)
+        time_draw.rectangle((0, 0, 400, 400), fill=255)
         moneyDay = getMoneyDay()
         if ('00' == moneyDay):
             time_draw.text((10, 5), u' ' + time.strftime('%m-%d') + u' 周' + digital_to_chinese(
@@ -164,7 +164,7 @@ try:
         # time_draw.text((10, 110),
         #                u'今:' + temperature + u'°C ' + weather + u' 明:' + tomorrowNightTemp + u'~' + tomorrowDayTemp + u'°C ' + tomorrowWeather + u' 更:' + reportTime,
         #                font=font18, fill=0)
-        newimage = time_image.crop([0, 0, 300, 300])
+        newimage = time_image.crop([0, 0, 400, 400])
         time_image.paste(newimage, (10, 10))
         # epd.displayBlack(epd.getbuffer(cv2.flip(cv2.cvtColor(np.array(time_image), cv2.COLOR_RGB2BGR), 1)))
         epd.displayBlack(epd.getbuffer(time_image.rotate(270).transpose(Image.FLIP_LEFT_RIGHT)))
